@@ -2,6 +2,7 @@ const input = require('fs').readFileSync('./d3_input.txt', 'utf-8').split('\n');
 let sumArray = [];
 const alphabet = '0abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
+// Part 1
 
 //         input.forEach((line) => {
 
@@ -26,11 +27,44 @@ const alphabet = '0abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('
 //         sum += alphabet.indexOf(sumArray[i])
 //     }
 
-let lineArray = []
+// console.log(sum)
 
-                for (let i = 0; i < input.length; i++){
 
-                    if (input.includes(input[i]) && !lineArray.includes(firstHalf[i])) {
-                        lineArray.push(firstHalf[i])
-                    }
+// Part 2
+//push every three lines into an array inside inputArray
+
+let inputArray = [];
+let lineArray = [];
+
+        input.forEach((line) => {
+            lineArray.push(line)
+            if (lineArray.length === 3) {
+                inputArray.push(lineArray)
+                lineArray = [];
+            }
+        })
+
+
+//loop through inputArray and compare each line to the other two lines
+//if there is a match, push the letter into a new array
+//if there is no match, move on to the next letter
+//push the new array into sumArray
+
+        inputArray.forEach((line) => {
+            let lineArray = [];
+            for (let i = 0; i < line[0].length; i++) {
+                if (line[1].includes(line[0][i]) && line[2].includes(line[0][i]) && !lineArray.includes(line[0][i])) {
+                    lineArray.push(line[0][i])
                 }
+            }
+            sumArray.push(lineArray)
+        })
+
+        let sum = 0;
+            sumArray = sumArray.flat(1)
+
+            for (let i = 0; i < sumArray.length; i++) {
+                sum += alphabet.indexOf(sumArray[i])
+            }
+
+        console.log(sum)
