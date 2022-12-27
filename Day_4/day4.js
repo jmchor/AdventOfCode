@@ -1,3 +1,4 @@
+console.time()
 const input = require('fs').readFileSync('./d4_input.txt', 'utf-8').split('\n');
 
 const compare = input.map(item => item.split(',').map(item => item.split('-').map(Number)));
@@ -24,4 +25,5 @@ compare.forEach(line => {
 
 console.log(containsCompleteRange)
 
+console.timeEnd()
 // for  Part2, replace .every() with .some() and it works
