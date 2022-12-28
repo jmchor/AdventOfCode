@@ -36,3 +36,4 @@ let numOnly = splittage.map(array => array.filter(item => {
 
 
 console.log(numOnly)
+
