@@ -21,7 +21,9 @@ for (let i = 1; i < forrestMap.length -1; i++) {
         //check if the current tree is taller than the tallest so far from the left OR
         //the tallest so far from the top by comparing the same sections but in the rotated map
 
-        if (tallestFromLeft < forrestMap[i][j] || tallestFromTop < forrestMap[i][j]) {
+        if (tallestFromLeft < forrestMap[i][j] || tallestFromTop <
+            //TODO
+            rotatedMap[i][j]) {
             tallestFromLeft = forrestMap[i][j];
             sum++;
         }
