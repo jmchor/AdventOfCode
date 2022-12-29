@@ -71,16 +71,66 @@ let sum = 0
 //for every tree, count the number of trees between it and a tree that is higher than it
 //count in every direction
 
-// to the left
+
+
+let maxViewToRight = 0;
+let viewToRight = 0;
+
+
 for (let i = 0; i < forrestMap.length; i++) {
 
     for (let j = 0; j < forrestMap.length; j++) {
 
-       let currentTree = forrestMap[i][j];
+        let currentTree = forrestMap[i][j];
+        viewToRight = 0;
+        //to right
+        for (let k = 0; k < forrestMap.length; k++) {
 
-       if (currentTree > forrestMap[i][j+1]) {
-           sum += 1;
-       }
+            if (currentTree > forrestMap[i][j + k + 1]) {
+                viewToRight += 1;
+            } else if (currentTree <= forrestMap[i][j + k + 1]) {
+                viewToRight += 1;
+
+                break;
+            }
+
+            if (viewToRight > maxViewToRight) {
+                maxViewToRight = viewToRight;
+
+            }
+        }
+
     }
-
 }
+console.log(forrestMap)
+console.log(maxViewToRight)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let maxViewLeft = 0;
+// for (let i = 0; i < forrestMap.length; i++) {
+
+//     for (let j = 0; j < forrestMap.length; j++) {
+
+//        let currentTree = forrestMap[i][j];
+
+//        if (currentTree > forrestMap[i][j+1]) {
+//            maxViewLeft += 1;
+//        } else if (currentTree < forrestMap[i][j+1]) {
+//            break;
+//        }
+//     }
+
+// }
